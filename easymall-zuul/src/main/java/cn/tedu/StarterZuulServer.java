@@ -1,0 +1,23 @@
+package cn.tedu;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@EnableZuulProxy
+public class StarterZuulServer {
+    public static void main(String[] args) {
+        SpringApplication.run(StarterZuulServer.class, args);
+    }
+
+    @Bean
+    public RestTemplate getInstance(){
+        return new RestTemplate();
+    }
+
+}

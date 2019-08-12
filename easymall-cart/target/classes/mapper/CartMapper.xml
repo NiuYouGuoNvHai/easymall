@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.mapper.CartMapper">
+    <!-- 查询购物车 -->
+    <select id="queryCart" parameterType="String" resultType="Cart">
+        select * from t_cart where user_id=#{userId};
+    </select>
+
+    <!-- 查询单个购物车记录 -->
+    <select id="queryOne" parameterType="Cart" resultType="Cart">
+        select * from t_cart where user_id=#{userId} and product_id=#{productId};
+    </select>
+
+    <!-- 添加购物车记录 -->
+    <insert id="saveCart" parameterType="Cart">
+        insert into t_cart (
+            user_id,
+            product_id,
+            product_name,
+            product_price,
+            product_image,
+            num)
+        values (
+            {userId},
+            {productId},
+            {productName},
+            {productPrice},
+            {productImage},
+            {num})
+    </insert>
+
+    <!-- 修改购物车商品的数量 -->
+    <update id="updateCartNum" parameterType="Cart">
+        update t_cart set num=#{num} where user_id=#{userId} and product_id=#{productId}
+    </update>
+
+    <!-- 删除购物车记录 -->
+    <delete id="deleteCart" parameterType="Cart">
+        delete from t_cart where user_id=#{userId} and product_id=#{productId};
+    </delete>
+
+
+</mapper> 

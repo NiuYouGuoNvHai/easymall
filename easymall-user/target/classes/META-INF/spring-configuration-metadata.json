@@ -1,0 +1,32 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "cn.tedu.config.ShardedJedisPoolConfig",
+      "name": "spring.redis",
+      "type": "cn.tedu.config.ShardedJedisPoolConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "cn.tedu.config.ShardedJedisPoolConfig",
+      "name": "spring.redis.max-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.config.ShardedJedisPoolConfig",
+      "name": "spring.redis.max-total",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.config.ShardedJedisPoolConfig",
+      "name": "spring.redis.min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.config.ShardedJedisPoolConfig",
+      "name": "spring.redis.nodes",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}
