@@ -22,12 +22,12 @@
             product_image,
             num)
         values (
-            {userId},
-            {productId},
-            {productName},
-            {productPrice},
-            {productImage},
-            {num})
+            #{userId},
+            #{productId},
+            #{productName},
+            #{productPrice},
+            #{productImage},
+            #{num})
     </insert>
 
     <!-- 修改购物车商品的数量 -->

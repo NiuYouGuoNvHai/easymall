@@ -68,7 +68,7 @@ public class CartService {
         } else {
         // 购物记录不存在 --> 新增购物车
             // 先查询商品表
-            Product product = ribbon.getForObject("http://productService/product/manage/item" + cart.getProductId(), Product.class);
+            Product product = ribbon.getForObject("http://productService/product/manage/item/" + cart.getProductId(), Product.class);
             // 补齐商品信息
             cart.setProductName(product.getProductName());
             cart.setProductImage(product.getProductImgurl());
