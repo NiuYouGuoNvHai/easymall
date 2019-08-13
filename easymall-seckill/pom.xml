@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.tedu</groupId>
   <artifactId>easymall-seckill</artifactId>
   <version>1.0-SNAPSHOT</version>
-
-  <name>easymall-seckill</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <packaging>jar</packaging>
+  <!-- 继承父工程 -->
+  <parent>
+    <groupId>cn.tedu</groupId>
+    <artifactId>easymall-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,14 +22,60 @@
   </properties>
 
   <dependencies>
+    <!-- 添加common-resources资源 -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+      <groupId>cn.tedu</groupId>
+      <artifactId>easymall-common-resources</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
+    <!-- 添加common-resources-redis资源 -->
+    <dependency>
+      <groupId>cn.tedu</groupId>
+      <artifactId>easymall-common-resource-redis</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!-- mybatis依赖 -->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+    </dependency>
+    <!-- druid数据源 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
+    <!-- mysql -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <!-- springCloud -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-eureka</artifactId>
+    </dependency>
+    <!-- org\springframework\amqp\spring-rabbit\1.7.4.RELEASE -->
+    <!-- org\springframework\amqp\spring-amqp\1.7.4.RELEASE-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-amqp</artifactId>-->
+<!--      -->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.amqp</groupId>-->
+<!--      <artifactId>spring-amqp</artifactId>-->
+<!--      <version>1.7.4.RELEASE</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.amqp</groupId>-->
+<!--      <artifactId>spring-rabbit</artifactId>-->
+<!--      <version>1.7.4.RELEASE</version>-->
+<!--    </dependency>-->
+
   </dependencies>
-
-
-
 
 </project>
