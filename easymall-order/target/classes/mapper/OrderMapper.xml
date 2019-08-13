@@ -5,6 +5,7 @@
 
     <!-- 查询订单 -->
     <resultMap type="Order" id="RMDOrder">
+        <id column="order_id" property="orderId"/>
         <collection property="orderItems" column="order_id" javaType="ArrayList" ofType="OrderItem" select="queryOrderItems">
         </collection>
     </resultMap>

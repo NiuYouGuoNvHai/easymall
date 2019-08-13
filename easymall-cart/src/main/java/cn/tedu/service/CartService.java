@@ -40,14 +40,13 @@ public class CartService {
                     String cartJson = cluster.get(cartKey);
                     Cart cart = MapperUtil.MP.readValue(cartJson, Cart.class);
                     cartList.add(cart);
-                    return cartList;
                 }
             }
+            return cartList;
         }else {
             // 不存在
             return null;
         }
-        return null;
     }
 
     /* 新增商品到购物车(新增购物车记录) */
@@ -62,7 +61,7 @@ public class CartService {
             Cart exist = MapperUtil.MP.readValue(cartJson, Cart.class);
             cart.setNum(cart.getNum() + exist.getNum());
             // 更新数据库
-            cartMapper.updateCartNum(cart);
+            //cartMapper.updateCartNum(cart);
             // 更新缓存
             cluster.set(cartKey, MapperUtil.MP.writeValueAsString(exist));
         } else {
@@ -74,7 +73,7 @@ public class CartService {
             cart.setProductImage(product.getProductImgurl());
             cart.setProductPrice(product.getProductPrice());
             // 存数据库
-            cartMapper.saveCart(cart);
+            //cartMapper.saveCart(cart);
             // 再存缓存
             String cartKey = "cart_" + cart.getUserId() + cart.getProductId();
             // 存set
@@ -85,13 +84,24 @@ public class CartService {
     }
 
     /* 增加购物车商品的数量(购物车记录已经存在) */
-    public void updateCart(Cart cart) {
-        cartMapper.updateCartNum(cart);
+    public void updateCart(Cart cart) throws IOException {
+        String cartKey = "cart_" + cart.getUserId() + cart.getProductId();
+        String cartJson = cluster.get(cartKey);
+        Cart exist = MapperUtil.MP.readValue(cartJson, Cart.class);
+        cart.setNum(cart.getNum() + exist.getNum());
+        cluster.set(cartKey, MapperUtil.MP.writeValueAsString(cart));
     }
 
     /* 删除购物车记录 */
     public void deleteCart(Cart cart) {
-        cartMapper.deleteCart(cart);
+        String cartUserKey = "cart_user_" + cart.getUserId();
+        String cartKey = "cart_" + cart.getUserId() + cart.getProductId();
+        // 删除set的value
+        cluster.srem(cartUserKey, cart.getProductId());
+        // 删除对应的key value
+        cluster.del(cartKey);
+
+
     }
 
 
